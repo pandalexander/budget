@@ -1,3 +1,26 @@
-<div class="w-auto border-4 bordern-black flex p-6">
+<div class="w-auto border-4 border-primaryRed rounded-lg flex flex-col p-6">
   <h3>How much do I need to save for college?</h3>
+
+  <div class="flex justify-start items-center">
+    <p>I have&#160;</p>
+
+    <input
+      type="number"
+      id="numOfChildren"
+      [formControl]="numOfChildren"
+      class="inline text-base"
+      min="0"
+      max="10"
+      placeholder="0"
+    />
+    @if (numOfChildren.value! === 1) {
+    <p>&#160;child.&#160;</p>
+    } @else {
+    <p>&#160;children.&#160;</p>
+    }
+  </div>
+  <p>numOfChildren: {{ numOfChildren.value }}</p>
+  <ng-container *ngFor="let num of [].constructor(numOfChildren.value)"
+    >🧒</ng-container
+  >
 </div>
