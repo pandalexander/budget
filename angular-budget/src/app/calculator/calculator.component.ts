@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
@@ -9,16 +9,28 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrl: './calculator.component.css',
 })
 export class CalculatorComponent {
+  private formBuilder = inject(FormBuilder);
+
   maxChildren: number = 10;
 
   childrenOptions = new Array(this.maxChildren).fill(0).map((_, i) => i + 1);
 
-  infoForm = new FormGroup({
-    numOfChildren: new FormControl('1'),
+  infoForm = this.formBuilder.group({
+    numOfChildren: ['1'],
+
+    ages: this.formBuilder.array([this.formBuilder.control('')]),
   });
 
   get numOfChildren() {
     return this.infoForm.get('numOfChildren')!.value;
+  }
+
+  get ages() {
+    return this.infoForm.get('ages') as FormArray;
+  }
+
+  addAge() {
+    this.ages.push(this.formBuilder.control(''));
   }
 
   onSubmit() {
