@@ -3,63 +3,31 @@
 >
   <h3>How much do I need to save for college?</h3>
 
-  <div class="flex justify-start items-center">
-    <p>I have&#160;</p>
+  <div>
+    <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
+      <div class="flex justify-start items-center">
+        <p>I have&#160;</p>
+        <select
+          name="numOfChildren"
+          id="numOfChildren"
+          formControlName="numOfChildren"
+        >
+          @for(item of childrenOptions; track item) {
+          <option [value]="item">{{ item }}</option>
+          }
+        </select>
+        @if(numOfChildren !== null && +numOfChildren > 1) {
+        <p>&#160;children.</p>
+        } @else {
+        <p>&#160;child.</p>
 
-    <select
-      id="numOfChildren"
-      [formControl]="numOfChildren"
-      class="inline text-base"
-      (select)="foo()"
-      (change)="foo()"
-    >
-      <option value="1" selected>one</option>
-      <option value="2">two</option>
-      <option value="3">three</option>
-      <option value="4">four</option>
-      <option value="5">five</option>
-      <option value="6">six</option>
-      <option value="7">seven</option>
-      <option value="8">eight</option>
-    </select>
-    @if (numOfChildren.value! === 1) {
-    <p>&#160;child.&#160;</p>
-    } @else {
-    <p>&#160;children.&#160;</p>
-    }
-  </div>
-  <p>numOfChildren: {{ numOfChildren.value }}</p>
-  <ng-container *ngFor="let num of [].constructor(numOfChildren.value)"
-    >🐱</ng-container
-  >
-
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <!-- Dropdown to select the number of children -->
-    <label for="numChildren">Number of Children:</label>
-    <select id="numChildren" formControlName="numChildren">
-      <option *ngFor="let num of numberOptions" [value]="num">{{ num }}</option>
-    </select>
-
-    <!-- Dynamically created fields for birth years -->
-    <div formArrayName="birthYears">
-      <div
-        *ngFor="let birthYear of birthYears.controls; let i = index"
-        [formGroupName]="i"
-      >
-        <label for="birthYear-{{ i }}">Child {{ i + 1 }} Birth Year:</label>
-        <input
-          id="birthYear-{{ i }}"
-          type="number"
-          formControlName="year"
-          [min]="currentYear - 18"
-          [placeholder]="currentYear"
-          [max]="currentYear + 1"
-          required
-        />
+        }
       </div>
-    </div>
+      <button type="submit">SUBMIT ME</button>
+    </form>
+  </div>
 
-    <!-- Submit Button -->
-    <button type="submit">Submit</button>
-  </form>
+  <div>
+    <h4>Number of Children: {{ numOfChildren }}</h4>
+  </div>
 </div>
