@@ -11,6 +11,7 @@
           name="numOfChildren"
           id="numOfChildren"
           formControlName="numOfChildren"
+          (change)="onChildrenChange()"
         >
           @for(item of childrenOptions; track item) {
           <option [value]="item">{{ item }}</option>

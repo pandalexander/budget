@@ -36,4 +36,19 @@ export class CalculatorComponent {
   onSubmit() {
     console.log(this.infoForm.value);
   }
+
+  onChildrenChange() {
+    const newAmount = +this.numOfChildren!;
+
+    if (newAmount === this.ages.length) {
+      return;
+    } else if (newAmount < this.ages.length) {
+      for (let i = this.ages.length; i >= newAmount; i--) {
+        this.ages.removeAt(i);
+      }
+    } else if (newAmount > this.ages.length)
+      for (let i = this.ages.length; i < newAmount; i++) {
+        this.addAge();
+      }
+  }
 }
