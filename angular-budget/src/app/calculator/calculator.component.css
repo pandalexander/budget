@@ -1,3 +1,12 @@
+* {
+  margin: 0px;
+}
+
+div {
+  line-height: 45px;
+  text-wrap: wrap;
+}
+
 p,
 input,
 option,
@@ -5,17 +14,27 @@ select {
   font-size: 20px;
 }
 
+p {
+  display: inline;
+}
+
 input,
 select {
   padding: 2px;
   border-radius: 5px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+input {
+  max-height: 35px;
 }
 
 input:invalid {
-  border: 2px dashed red;
+  border: 1px dashed red;
 }
 
 input:valid,
 select {
-  border: 2px solid black;
+  border: 1.5px solid black;
 }

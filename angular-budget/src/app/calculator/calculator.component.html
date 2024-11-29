@@ -3,10 +3,10 @@
 >
   <h3>How much do I need to save for college?</h3>
 
-  <div>
+  <div class="!mt-4">
     <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
-      <div class="flex justify-start items-center flex-wrap">
-        <p>I have&#160;</p>
+      <div class="break-normal">
+        <p>I have</p>
         <select
           name="numOfChildren"
           id="numOfChildren"
@@ -17,27 +17,39 @@
           <option [value]="item">{{ item }}</option>
           }
         </select>
-        <span>&#160;</span>
-        <div>
-          @if(numOfChildren !== null && +numOfChildren > 1) {
-          <p>children. Their ages are:</p>
-          } @else {
-          <p>child. Their age is:</p>
-          }
-        </div>
-      </div>
-      <div formArrayName="ages" class="flex flex-wrap gap-3">
-        @for(age of ages.controls; track $index) {
-        <input
-          id="age-{{ $index }}"
-          type="text"
-          [formControlName]="$index"
-          placeholder="00"
-          maxlength="2"
-          class="flex flex-1 md:max-w-16 md:text-center sm: max-w-full"
-        />
 
+        @if(numOfChildren !== null && +numOfChildren > 1) {
+        <p class="mb-14">children. Their ages are:&#160;</p>
+        } @else {
+        <p>child. Their age is:</p>
         }
+
+        <span formArrayName="ages" class="inline">
+          @for(age of ages.controls; track $index) { @if(ages.controls.length >
+          1 && $index !== 0) {
+          <p class="inline">&#160;and&#160;</p>
+          <input
+            id="age-{{ $index }}"
+            type="text"
+            [formControlName]="$index"
+            placeholder="00"
+            maxlength="2"
+            class="max-w-16 text-center inline"
+          />
+
+          } @else {
+          <input
+            id="age-{{ $index }}"
+            type="text"
+            [formControlName]="$index"
+            placeholder="00"
+            maxlength="2"
+            class="max-w-16 text-center inline"
+          />
+
+          } }
+        </span>
+        <p>. I plan to fund&nbsp;</p>
       </div>
 
       <button type="submit">SUBMIT ME</button>
