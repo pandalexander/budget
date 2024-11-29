@@ -19,26 +19,29 @@
         </select>
         <div>
           @if(numOfChildren !== null && +numOfChildren > 1) {
-          <p>&#160;children.</p>
+          <p>&#160;children. Their ages are:</p>
           } @else {
-          <p>&#160;child.</p>
+          <p>&#160;child. Their age is:</p>
           }
         </div>
-
         <div formArrayName="ages">
-          <button (click)="addAge()" type="button">Add Age!</button>
           @for(age of ages.controls; track $index) {
-          <div>
+          <div class="inline">
             <input
               id="age-{{ $index }}"
               type="text"
               [formControlName]="$index"
+              placeholder="00"
+              maxlength="2"
             />
-            <p>{{ $index }}</p>
           </div>
+          <p class="inline">&#160;</p>
+
           }
         </div>
+        <span>.</span>
       </div>
+
       <button type="submit">SUBMIT ME</button>
     </form>
   </div>

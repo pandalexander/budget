@@ -1,6 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  FormArray,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
@@ -18,7 +24,9 @@ export class CalculatorComponent {
   infoForm = this.formBuilder.group({
     numOfChildren: ['1'],
 
-    ages: this.formBuilder.array([this.formBuilder.control('')]),
+    ages: this.formBuilder.array([
+      this.formBuilder.control('', [Validators.required]),
+    ]),
   });
 
   get numOfChildren() {
@@ -30,11 +38,16 @@ export class CalculatorComponent {
   }
 
   addAge() {
-    this.ages.push(this.formBuilder.control(''));
+    this.ages.push(this.formBuilder.control('', [Validators.required]));
   }
 
   onSubmit() {
-    console.log(this.infoForm.value);
+    if (this.infoForm.valid) {
+      console.log(this.infoForm.value);
+    } else {
+      this.infoForm.markAsTouched;
+      console.log('TRY AGAIN');
+    }
   }
 
   onChildrenChange() {
