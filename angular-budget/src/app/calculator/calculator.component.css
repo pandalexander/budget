@@ -10,7 +10,8 @@ div {
 p,
 input,
 option,
-select {
+select,
+span {
   font-size: 20px;
 }
 
