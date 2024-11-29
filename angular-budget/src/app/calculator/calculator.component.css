@@ -5,8 +5,8 @@ select {
   font-size: 20px;
 }
 
-input {
-  width: 38px;
+input,
+select {
   padding: 2px;
   border-radius: 5px;
 }
@@ -15,6 +15,7 @@ input:invalid {
   border: 2px dashed red;
 }
 
-input:valid {
+input:valid,
+select {
   border: 2px solid black;
 }

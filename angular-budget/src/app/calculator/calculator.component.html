@@ -5,7 +5,7 @@
 
   <div>
     <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
-      <div class="flex justify-start items-center">
+      <div class="flex justify-start items-center flex-wrap">
         <p>I have&#160;</p>
         <select
           name="numOfChildren"
@@ -17,29 +17,27 @@
           <option [value]="item">{{ item }}</option>
           }
         </select>
+        <span>&#160;</span>
         <div>
           @if(numOfChildren !== null && +numOfChildren > 1) {
-          <p>&#160;children. Their ages are:</p>
+          <p>children. Their ages are:</p>
           } @else {
-          <p>&#160;child. Their age is:</p>
+          <p>child. Their age is:</p>
           }
         </div>
-        <div formArrayName="ages">
-          @for(age of ages.controls; track $index) {
-          <div class="inline">
-            <input
-              id="age-{{ $index }}"
-              type="text"
-              [formControlName]="$index"
-              placeholder="00"
-              maxlength="2"
-            />
-          </div>
-          <p class="inline">&#160;</p>
+      </div>
+      <div formArrayName="ages" class="flex flex-wrap gap-3">
+        @for(age of ages.controls; track $index) {
+        <input
+          id="age-{{ $index }}"
+          type="text"
+          [formControlName]="$index"
+          placeholder="00"
+          maxlength="2"
+          class="flex flex-1 md:max-w-16 md:text-center sm: max-w-full"
+        />
 
-          }
-        </div>
-        <span>.</span>
+        }
       </div>
 
       <button type="submit">SUBMIT ME</button>
