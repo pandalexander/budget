@@ -19,8 +19,8 @@ p {
   display: inline;
 }
 
-input,
-select {
+select,
+input {
   padding: 2px;
   border-radius: 5px;
   margin-left: 6px;
@@ -29,6 +29,7 @@ select {
 
 input {
   max-height: 35px;
+  padding-right: 0px !important;
 }
 
 input:invalid {

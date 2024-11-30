@@ -30,7 +30,7 @@
           <p class="inline">and</p>
           <input
             id="age-{{ $index }}"
-            type="text"
+            type="number"
             [formControlName]="$index"
             placeholder="00"
             maxlength="2"
@@ -40,7 +40,7 @@
           } @else {
           <input
             id="age-{{ $index }}"
-            type="text"
+            type="number"
             [formControlName]="$index"
             placeholder="00"
             maxlength="2"
@@ -51,6 +51,27 @@
         </span>
 
         <p>and I plan to fund&nbsp;</p>
+
+        <input
+          id="percentage"
+          type="number"
+          formControlName="percentage"
+          placeholder="100"
+          maxlength="3"
+          class="max-w-24 text-center inline"
+        />
+        <p>% of my child's</p>
+        <select
+          name="collegeSelection"
+          id="collegeSelection"
+          formControlName="collegeSelection"
+          [selectedIndex]="0"
+        >
+          @for(item of collegeTypes; track item) {
+          <option [value]="item">{{ item }}</option>
+          }
+        </select>
+        <p>college expenses. I have</p>
       </div>
 
       <button type="submit">SUBMIT ME</button>

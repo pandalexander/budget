@@ -21,12 +21,23 @@ export class CalculatorComponent {
 
   childrenOptions = new Array(this.maxChildren).fill(0).map((_, i) => i + 1);
 
+  collegeTypes = [
+    'private 4-year',
+    'private 2-year',
+    'public 4-year in-state',
+    'public 4-year out-of-state',
+  ];
+
   infoForm = this.formBuilder.group({
     numOfChildren: ['1'],
 
     ages: this.formBuilder.array([
       this.formBuilder.control('', [Validators.required]),
     ]),
+
+    percentage: [100],
+
+    collegeSelection: ['private 4-year'],
   });
 
   get numOfChildren() {
