@@ -38,6 +38,8 @@ export class CalculatorComponent {
     percentage: [100],
 
     collegeSelection: ['private 4-year'],
+
+    moneySaved: [0],
   });
 
   get numOfChildren() {

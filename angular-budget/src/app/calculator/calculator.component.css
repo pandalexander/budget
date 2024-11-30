@@ -40,3 +40,7 @@ input:valid,
 select {
   border: 1.5px solid black;
 }
+
+#moneySaved {
+  padding-left: 14px;
+}
