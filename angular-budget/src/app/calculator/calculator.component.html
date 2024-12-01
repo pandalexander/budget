@@ -6,7 +6,7 @@
   <div class="!mt-4">
     <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
       <div class="break-normal">
-        <p>I have</p>
+        <p>I have&#32;</p>
         <select
           name="numOfChildren"
           id="numOfChildren"
@@ -19,15 +19,15 @@
         </select>
 
         @if(numOfChildren !== null && +numOfChildren > 1) {
-        <p class="mb-14">children. Their ages are:</p>
+        <p class="mb-14">&#32;children. Their ages are:&#32;</p>
         } @else {
-        <p>child. Their age is:</p>
+        <p>&#32;child. Their age is:&#32;</p>
         }
 
         <span formArrayName="ages" class="inline">
           @for(age of ages.controls; track $index) { @if(ages.controls.length >
           1 && $index !== 0) {
-          <p class="inline">and</p>
+          <p class="inline">&#32;and&#32;</p>
           <input
             id="age-{{ $index }}"
             type="number"
@@ -50,7 +50,7 @@
           } }
         </span>
 
-        <p>and I plan to fund&nbsp;</p>
+        <p>&#32;and I plan to fund&#32;</p>
 
         <input
           id="percentage"
@@ -58,36 +58,56 @@
           formControlName="percentage"
           placeholder="100"
           maxlength="3"
-          class="max-w-24 text-center inline"
+          class="max-w-24 text-center inline percent-icon-input-field"
         />
-        <p>% of my child's</p>
+        <p>&#32;of their&#32;</p>
         <select
           name="collegeSelection"
           id="collegeSelection"
           formControlName="collegeSelection"
           [selectedIndex]="0"
+          class="text-center"
         >
           @for(item of collegeTypes; track item) {
           <option [value]="item">{{ item }}</option>
           }
         </select>
-        <p>college expenses. I have $</p>
+        <p>&#32;college expenses. I have&#32;</p>
         <input
           type="number"
           name="moneySaved"
           id="moneySaved"
           formControlName="moneySaved"
           placeholder="0"
-          class="max-w-36 text-left"
+          class="max-w-44 text-left !pl-7 dollar-icon-input-field"
         />
-        <p>saved so far.</p>
+        <p>&#32;saved so far.</p>
       </div>
 
-      <button type="submit">SUBMIT ME</button>
+      <div class="flex !mt-8">
+        <button
+          type="submit"
+          class="text-white text-center rounded-md flex-1 text-xl bg-primaryRed hover:bg-red-800 active:text-primaryRed !disabled:bg-gray"
+          [disabled]="!infoForm.valid"
+        >
+          Get Results
+        </button>
+      </div>
+      <div class="!mt-5">
+        @if(ages.invalid && ages.touched) {
+        <p class="validation-message text-primaryRed">
+          Ages must be between 0 and 17
+        </p>
+        } @if(percentage.invalid && percentage.touched) {
+        <p class="validation-message text-primaryRed">
+          Percentage must be between 1% and 100%
+        </p>
+        } @if(moneySaved.invalid && moneySaved.touched) {
+        <p class="validation-message text-primaryRed">
+          Money saved must be between 0 and $6,000,000
+        </p>
+        }
+      </div>
     </form>
-  </div>
-
-  <div>
-    <h4>Number of Children: {{ numOfChildren }}</h4>
   </div>
 </div>

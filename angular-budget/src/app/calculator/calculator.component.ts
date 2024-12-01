@@ -22,24 +22,42 @@ export class CalculatorComponent {
   childrenOptions = new Array(this.maxChildren).fill(0).map((_, i) => i + 1);
 
   collegeTypes = [
-    'private 4-year',
-    'private 2-year',
-    'public 4-year in-state',
     'public 4-year out-of-state',
+    'public 4-year in-state',
+    'private 2-year',
+    'private 4-year',
   ];
 
   infoForm = this.formBuilder.group({
     numOfChildren: ['1'],
 
     ages: this.formBuilder.array([
-      this.formBuilder.control('', [Validators.required]),
+      this.formBuilder.control('', [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(17),
+      ]),
     ]),
 
-    percentage: [100],
+    percentage: [
+      100,
+      Validators.compose([
+        Validators.required,
+        Validators.min(1),
+        Validators.max(100),
+      ]),
+    ],
 
-    collegeSelection: ['private 4-year'],
+    collegeSelection: ['public 4-year out-of-state'],
 
-    moneySaved: [0],
+    moneySaved: [
+      0,
+      Validators.compose([
+        Validators.required,
+        Validators.min(0),
+        Validators.max(6000000),
+      ]),
+    ],
   });
 
   get numOfChildren() {
@@ -48,6 +66,14 @@ export class CalculatorComponent {
 
   get ages() {
     return this.infoForm.get('ages') as FormArray;
+  }
+
+  get percentage() {
+    return this.infoForm.get('percentage')!;
+  }
+
+  get moneySaved() {
+    return this.infoForm.get('moneySaved')!;
   }
 
   addAge() {
