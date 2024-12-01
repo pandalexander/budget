@@ -1,113 +1,109 @@
-<div
-  class="w-auto border-4 border-primaryRed rounded-lg flex flex-col p-6 mb-8"
->
-  <h3>How much do I need to save for college?</h3>
+<h3>How much do I need to save for college?</h3>
 
-  <div class="!mt-4">
-    <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
-      <div class="break-normal">
-        <p>I have&#32;</p>
-        <select
-          name="numOfChildren"
-          id="numOfChildren"
-          formControlName="numOfChildren"
-          (change)="onChildrenChange()"
-        >
-          @for(item of childrenOptions; track item) {
-          <option [value]="item">{{ item }}</option>
-          }
-        </select>
+<div class="!mt-4">
+  <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
+    <div class="break-normal">
+      <p>I have&#32;</p>
+      <select
+        name="numOfChildren"
+        id="numOfChildren"
+        formControlName="numOfChildren"
+        (change)="onChildrenChange()"
+      >
+        @for(item of childrenOptions; track item) {
+        <option [value]="item">{{ item }}</option>
+        }
+      </select>
 
-        @if(numOfChildren !== null && +numOfChildren > 1) {
-        <p class="mb-14">&#32;children. Their ages are:&#32;</p>
+      @if(numOfChildren !== null && +numOfChildren > 1) {
+      <p class="mb-14">&#32;children. Their ages are:&#32;</p>
+      } @else {
+      <p>&#32;child. Their age is:&#32;</p>
+      }
+
+      <span formArrayName="ages" class="inline">
+        @for(age of ages.controls; track $index) { @if(ages.controls.length > 1
+        && $index !== 0) {
+        <p class="inline">&#32;and&#32;</p>
+        <input
+          id="age-{{ $index }}"
+          type="number"
+          [formControlName]="$index"
+          placeholder="00"
+          maxlength="2"
+          class="max-w-16 text-center inline"
+        />
+
         } @else {
-        <p>&#32;child. Their age is:&#32;</p>
-        }
-
-        <span formArrayName="ages" class="inline">
-          @for(age of ages.controls; track $index) { @if(ages.controls.length >
-          1 && $index !== 0) {
-          <p class="inline">&#32;and&#32;</p>
-          <input
-            id="age-{{ $index }}"
-            type="number"
-            [formControlName]="$index"
-            placeholder="00"
-            maxlength="2"
-            class="max-w-16 text-center inline"
-          />
-
-          } @else {
-          <input
-            id="age-{{ $index }}"
-            type="number"
-            [formControlName]="$index"
-            placeholder="00"
-            maxlength="2"
-            class="max-w-16 text-center inline"
-          />
-
-          } }
-        </span>
-
-        <p>&#32;and I plan to fund&#32;</p>
-
         <input
-          id="percentage"
+          id="age-{{ $index }}"
           type="number"
-          formControlName="percentage"
-          placeholder="100"
-          maxlength="3"
-          class="max-w-24 text-center inline percent-icon-input-field"
+          [formControlName]="$index"
+          placeholder="00"
+          maxlength="2"
+          class="max-w-16 text-center inline"
         />
-        <p>&#32;of their&#32;</p>
-        <select
-          name="collegeSelection"
-          id="collegeSelection"
-          formControlName="collegeSelection"
-          [selectedIndex]="0"
-          class="text-center"
-        >
-          @for(item of collegeTypes; track item) {
-          <option [value]="item">{{ item }}</option>
-          }
-        </select>
-        <p>&#32;college expenses. I have&#32;</p>
-        <input
-          type="number"
-          name="moneySaved"
-          id="moneySaved"
-          formControlName="moneySaved"
-          placeholder="0"
-          class="max-w-44 text-left !pl-7 dollar-icon-input-field"
-        />
-        <p>&#32;saved so far.</p>
-      </div>
 
-      <div class="flex !mt-8">
-        <button
-          type="submit"
-          class="text-white text-center rounded-md flex-1 text-xl bg-primaryRed hover:bg-red-800 active:text-primaryRed !disabled:bg-gray"
-          [disabled]="!infoForm.valid"
-        >
-          Get Results
-        </button>
-      </div>
-      <div class="!mt-5">
-        @if(ages.invalid && ages.touched) {
-        <p class="validation-message text-primaryRed">
-          Ages must be between 0 and 17
-        </p>
-        } @if(percentage.invalid && percentage.touched) {
-        <p class="validation-message text-primaryRed">
-          Percentage must be between 1% and 100%
-        </p>
-        } @if(moneySaved.invalid && moneySaved.touched) {
-        <p class="validation-message text-primaryRed">
-          Money saved must be between 0 and $6,000,000
-        </p>
+        } }
+      </span>
+
+      <p>&#32;and I plan to fund&#32;</p>
+
+      <input
+        id="percentage"
+        type="number"
+        formControlName="percentage"
+        placeholder="100"
+        maxlength="3"
+        class="max-w-24 text-center inline percent-icon-input-field"
+      />
+      <p>&#32;of their&#32;</p>
+      <select
+        name="collegeSelection"
+        id="collegeSelection"
+        formControlName="collegeSelection"
+        [selectedIndex]="0"
+        class="text-center"
+      >
+        @for(item of collegeTypes; track item) {
+        <option [value]="item">{{ item }}</option>
         }
-      </div>
-    </form>
-  </div>
+      </select>
+      <p>&#32;college expenses. I have&#32;</p>
+      <input
+        type="number"
+        name="moneySaved"
+        id="moneySaved"
+        formControlName="moneySaved"
+        placeholder="0"
+        class="max-w-44 text-left !pl-7 dollar-icon-input-field"
+      />
+      <p>&#32;saved so far.</p>
+    </div>
+
+    <div class="flex !mt-8">
+      <button
+        type="submit"
+        class="text-white text-center rounded-md flex-1 text-xl bg-primaryRed hover:bg-red-800 active:text-primaryRed !disabled:bg-gray"
+        [disabled]="!infoForm.valid"
+      >
+        Get Results
+      </button>
+    </div>
+    <div class="!mt-5">
+      @if(ages.invalid && ages.touched) {
+      <p class="validation-message text-primaryRed">
+        Ages must be between 0 and 17
+      </p>
+      } @if(percentage.invalid && percentage.touched) {
+      <p class="validation-message text-primaryRed">
+        Percentage must be between 1% and 100%
+      </p>
+      } @if(moneySaved.invalid && moneySaved.touched) {
+      <p class="validation-message text-primaryRed">
+        Money saved must be between 0 and $6,000,000
+      </p>
+      }
+    </div>
+  </form>
 </div>

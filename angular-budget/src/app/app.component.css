@@ -5,3 +5,7 @@
 .invisible {
   display: none;
 }
+
+button:active {
+  background-color: #cccccc;
+}

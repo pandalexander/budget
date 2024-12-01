@@ -1,0 +1,70 @@
+* {
+  margin: 0px;
+}
+
+div {
+  line-height: 45px;
+  text-wrap: wrap;
+}
+
+p,
+input,
+option,
+select,
+span {
+  font-size: 20px;
+}
+
+p {
+  display: inline;
+}
+
+select,
+input {
+  padding: 2px;
+  border-radius: 5px;
+}
+
+input {
+  max-height: 35px;
+  padding-right: 0px !important;
+}
+
+input,
+select {
+  border: 1.5px solid black;
+}
+
+#moneySaved {
+  padding-left: 14px;
+}
+
+.percent-icon-input-field {
+  background: url(/assets/images/percent.png) no-repeat right;
+  padding-right: 25px;
+  background-size: 20px;
+}
+
+.dollar-icon-input-field {
+  background: url(/assets/images/dollar.png) no-repeat left;
+  padding-left: 25px;
+  background-size: 25px;
+}
+
+button:active {
+  background-color: #cccccc;
+}
+
+button:disabled,
+button[disabled] {
+  background-color: #cccccc;
+  color: #666666;
+}
+
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
+
+.validation-message {
+  display: block;
+}
