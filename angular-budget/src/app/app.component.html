@@ -9,6 +9,19 @@
       fees, room, and board, so you can confidently prepare for their
       educational journey.
     </h4>
-    <app-calculator></app-calculator>
+    <div
+      [ngClass]="{ 'is-visible': showCalculator, invisible: !showCalculator }"
+    >
+      <app-calculator
+        (formSubmitted)="handleFormSubmission($event)"
+      ></app-calculator>
+    </div>
+
+    <div
+      [ngClass]="{ 'is-visible': !showCalculator, invisible: showCalculator }"
+    >
+      <div>I am results!</div>
+      <button (click)="goBackToForm()">Try Submitting Again</button>
+    </div>
   </div>
 </main>

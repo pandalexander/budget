@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   FormGroup,
@@ -83,6 +83,7 @@ export class CalculatorComponent {
   onSubmit() {
     if (this.infoForm.valid) {
       console.log(this.infoForm.value);
+      this.formSubmitted.emit(7);
     } else {
       this.infoForm.markAsTouched;
       console.log('TRY AGAIN');
@@ -103,4 +104,6 @@ export class CalculatorComponent {
         this.addAge();
       }
   }
+
+  @Output() formSubmitted = new EventEmitter<number>();
 }
