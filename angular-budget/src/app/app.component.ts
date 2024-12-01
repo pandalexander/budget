@@ -15,12 +15,32 @@ export class AppComponent {
 
   showCalculator = false;
 
-  handleFormSubmission(money: number) {
-    console.log(money);
+  payloadToResult = {
+    numberOfChildren: 0,
+    agesOfChildren: [],
+    percentageOfFunding: 0,
+    collegeCost: 0,
+    currentSavings: 0,
+    rateOfReturn: 0,
+    annualCollegeCostInflation: 0,
+  };
+
+  handleFormSubmission(result: any) {
+    this.payloadToResult = result;
+    console.log(this.payloadToResult);
     this.showCalculator = false;
   }
 
   goBackToForm() {
     this.showCalculator = true;
+    this.payloadToResult = {
+      numberOfChildren: 0,
+      agesOfChildren: [],
+      percentageOfFunding: 0,
+      collegeCost: 0,
+      currentSavings: 0,
+      rateOfReturn: 0,
+      annualCollegeCostInflation: 0,
+    };
   }
 }

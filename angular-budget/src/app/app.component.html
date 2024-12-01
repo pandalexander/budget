@@ -24,7 +24,7 @@
       <div
         [ngClass]="{ 'is-visible': !showCalculator, invisible: showCalculator }"
       >
-        <app-results></app-results>
+        <app-results [payload]="payloadToResult"></app-results>
         <div class="flex !mt-8">
           <button
             (click)="goBackToForm()"

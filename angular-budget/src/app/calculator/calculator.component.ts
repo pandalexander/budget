@@ -24,7 +24,7 @@ export class CalculatorComponent {
   collegeTypes = [
     'public 4-year out-of-state',
     'public 4-year in-state',
-    'private 2-year',
+    'public 2-year',
     'private 4-year',
   ];
 
@@ -80,10 +80,46 @@ export class CalculatorComponent {
     this.ages.push(this.formBuilder.control('', [Validators.required]));
   }
 
+  fourYearOutOfStateAnnual = 45240;
+  fourYearInStateAnnual = 27940;
+  twoYearAnnual = 19239;
+  fourYearPrivate = 57570;
+
   onSubmit() {
+    const thisForm = this.infoForm.value;
+    let annualCollegeCost = 0;
+
+    switch (thisForm.collegeSelection) {
+      case 'public 4-year out-of-state':
+        annualCollegeCost = this.fourYearOutOfStateAnnual;
+        break;
+
+      case 'public 4-year in-state':
+        annualCollegeCost = this.fourYearInStateAnnual;
+        break;
+
+      case 'public 2-year':
+        annualCollegeCost = this.twoYearAnnual;
+        break;
+
+      case 'private 4-year':
+        annualCollegeCost = this.fourYearPrivate;
+        break;
+    }
+
+    const formToSubmit = {
+      numberOfChildren: +thisForm.numOfChildren!,
+      agesOfChildren: thisForm.ages!,
+      percentageOfFunding: thisForm.percentage,
+      collegeCost: annualCollegeCost,
+      currentSavings: thisForm.moneySaved,
+      rateOfReturn: 0.05,
+      annualCollegeCostInflation: 0.03,
+    };
+
     if (this.infoForm.valid) {
-      console.log(this.infoForm.value);
-      this.formSubmitted.emit(7);
+      // console.log(this.infoForm.value);
+      this.formSubmitted.emit(formToSubmit);
     } else {
       this.infoForm.markAsTouched;
       console.log('TRY AGAIN');
@@ -105,5 +141,5 @@ export class CalculatorComponent {
       }
   }
 
-  @Output() formSubmitted = new EventEmitter<number>();
+  @Output() formSubmitted = new EventEmitter<any>();
 }
