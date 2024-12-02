@@ -42,12 +42,15 @@ select {
 .percent-icon-input-field {
   background: url(../../assets/images/percent.png) no-repeat right;
   padding-right: 25px;
+  padding-top: 3px;
+
   background-size: 20px;
 }
 
 .dollar-icon-input-field {
   background: url(../../assets/images/dollar.png) no-repeat left;
   padding-left: 25px;
+  padding-top: 3px;
   background-size: 25px;
 }
 
