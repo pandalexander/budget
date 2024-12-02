@@ -1,5 +1,7 @@
 # College Savings Calculator
 
+[Live preview](https://pandalexander.github.io/budget/)
+
 A web-based calculator built with Angular that helps parents determine how much they need to save for their children's college education. The calculator takes into account multiple children, different types of colleges, and various financial factors to provide both total savings goals and monthly contribution recommendations.
 
 ## Features
@@ -18,12 +20,14 @@ A web-based calculator built with Angular that helps parents determine how much 
 ## Planned Improvements
 
 ### Data Type Refinement
+
 - Convert `numOfChildren` from string to number type
 - Implement proper typing for form data and payload objects
 - Add comprehensive interfaces for data transfer between components
 - Define proper types for all numerical inputs instead of using 'any'
 
 ### Financial Model Enhancement
+
 - Make interest rate (`rateOfReturn`) configurable instead of static 5%
 - Allow customizable inflation rate (currently fixed at 3%)
 - Add more sophisticated financial calculation options:
@@ -35,24 +39,28 @@ A web-based calculator built with Angular that helps parents determine how much 
 ### Technical Improvements
 
 #### Component Architecture
+
 - Implement proper interfaces for data transfer between components
 - Consider breaking down CalculatorComponent into smaller, more focused components
 - Add proper type safety for EventEmitter outputs
 - Implement proper form state management (RxJS)
 
 #### Form Validation
+
 - Add more comprehensive form validation
 - Implement proper error messaging
 - Add input formatting for currency values
 - Consider adding step-by-step form progression
 
 #### Code Organization
+
 - Move financial calculations to a dedicated service
 - Create shared interfaces for data models
 - Implement proper state management for complex calculations
 - Create constants file for static values (max children, college costs, etc.)
 
 #### Error Handling
+
 - Add proper error boundaries
 - Implement comprehensive error handling for calculations
 - Add validation feedback for edge cases
@@ -61,38 +69,45 @@ A web-based calculator built with Angular that helps parents determine how much 
 ## Component Overview
 
 ### AppComponent
+
 - Root component managing the application state
 - Handles navigation between calculator and results views
 - Manages data transfer between components
 
 ### CalculatorComponent
+
 - Manages the main input form
 - Handles dynamic form controls for multiple children
 - Performs initial data validation
 - Emits form data to parent component
 
 ### ResultsComponent
+
 - Displays calculation results
 - Performs complex financial calculations
 - Formats numerical outputs
 - Shows both total and monthly savings goals
 
 ### HeaderComponent
+
 - Displays application header and navigation
 
 ## Future Development Roadmap
 
 1. Phase 1: Data Type Refinement
+
    - Implement interfaces
    - Clean up numerical types
    - Add proper type safety
 
 2. Phase 2: Financial Model Enhancement
+
    - Add variable interest rates
    - Implement inflation adjustment options
    - Add more financial factors
 
 3. Phase 3: User Experience Improvements
+
    - Add data persistence
    - Implement step-by-step guidance
    - Add visual representations of data
@@ -107,6 +122,7 @@ A web-based calculator built with Angular that helps parents determine how much 
 This project calculates the financial goals needed to save for college expenses. Below are the two primary formulas used: **Total College Savings Goal** and **Monthly Savings Goal**.
 
 ### Total College Savings Goal
+
 The **Total College Savings Goal** determines the total amount of money you need to save for your children’s college education, considering inflation and your planned percentage of funding.
 
 **Formula**:
@@ -120,6 +136,7 @@ To calculate the **Total College Savings Goal**, use the following steps:
    - Total College Savings Goal = Sum of all savings goals.
 
 ### Monthly Savings Goal
+
 The **Monthly Savings Goal** calculates how much money you need to save each month to reach your college savings goal, accounting for compound interest on your investments.
 
 **Formula**:
@@ -133,7 +150,9 @@ To calculate the **Monthly Savings Goal**, follow these steps:
    - Monthly Savings Goal = `(Savings Goal * (rateOfReturn / 12)) / (((1 + (rateOfReturn / 12)) ^ (Tweighted * 12)) - 1)`
 
 ### Example
+
 For a family with:
+
 - **2 children**, ages 10 and 14,
 - **College Cost**: $25,000 annually,
 - **Annual College Cost Inflation**: 3%,
@@ -142,10 +161,11 @@ For a family with:
 - **Rate of Return**: 5%,
 
 We calculate:
+
 1. **Total College Savings Goal**: $227,584.45
 2. **Monthly Savings Goal**: $1,056.37
 
 ## Credit
 
-Massive credit to the developer(s) as Mass Mutual. I modeled this project after their college savings calculator. 
+Massive credit to the developer(s) as Mass Mutual. I modeled this project after their college savings calculator.
 It can be found here: https://www.massmutual.com/financial-wellness/calculators/college-savings-calculator
