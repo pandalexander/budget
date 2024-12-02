@@ -13,6 +13,12 @@ import { ResultsComponent } from './results/results.component';
 export class AppComponent {
   title = 'angular-budget';
 
+  showWarning = true;
+
+  handleWarningDismiss() {
+    this.showWarning = false;
+  }
+
   showCalculator = true;
 
   payloadToResult = {

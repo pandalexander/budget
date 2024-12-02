@@ -1,6 +1,28 @@
 <main class="flex justify-center">
-  <div class="w-full max-w-[980px] p-5">
+  <div class="w-full max-w-[980px] p-5 !m-0">
     <app-header></app-header>
+    <div [ngClass]="{ 'is-visible': showWarning, invisible: !showWarning }">
+      <div class="flex flex-col bg-amber-100 p-6 align-top rounded-md">
+        <p class="!m-0">
+          This website is a personal project and is not affiliated with,
+          endorsed by, or connected to ENT Bank in any way. It was created
+          solely for demonstration purposes to showcase web development learning
+          and user interface design capabilities. All logos and branding
+          elements are used for illustrative purposes only. For official ENT
+          Bank services, please
+          <a href="https://www.ent.com/" target="_blank"
+            >visit their official website</a
+          >.
+        </p>
+        <button
+          (click)="handleWarningDismiss()"
+          class="mt-6 text-white text-center rounded-md bg-primaryRed hover:bg-red-800 active:text-primaryRed"
+        >
+          I understand
+        </button>
+      </div>
+    </div>
+
     <h1>College Savings Calculator</h1>
     <h2>Secure Their Future, Plan Ahead</h2>
     <h4>
