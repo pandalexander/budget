@@ -40,4 +40,28 @@ export class ResultsComponent {
   get annualCollegeCostInflation(): number {
     return this.payload.annualCollegeCostInflation;
   }
+
+  numberWithCommas(x: string) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  get totalSavingsGoal(): string {
+    let totalCost = 0;
+
+    for (let i = 0; i < this.numberOfChildren; i++) {
+      let age = this.agesOfChildren[i];
+      let T = 18 - age;
+      const futureAnnualCost =
+        this.collegeCost * (1 + this.annualCollegeCostInflation) ** T;
+
+      const savingsGoal =
+        futureAnnualCost * this.collegeTime * (this.percentageOfFunding / 100);
+
+      totalCost += savingsGoal;
+    }
+
+    let roundedCost = totalCost.toFixed(0);
+
+    return this.numberWithCommas(roundedCost);
+  }
 }
