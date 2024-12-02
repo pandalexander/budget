@@ -45,7 +45,7 @@ export class ResultsComponent {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
-  get totalSavingsGoal(): string {
+  get totalSavingsGoal(): number {
     let totalCost = 0;
 
     for (let i = 0; i < this.numberOfChildren; i++) {
@@ -60,8 +60,39 @@ export class ResultsComponent {
       totalCost += savingsGoal;
     }
 
-    let roundedCost = totalCost.toFixed(0);
+    return Math.floor(totalCost);
+  }
 
-    return this.numberWithCommas(roundedCost);
+  get totalSavingsGoalFormatted(): string {
+    return this.numberWithCommas(this.totalSavingsGoal.toFixed(0));
+  }
+
+  get monthlySavingsGoal(): number {
+    const savingsGoal = this.totalSavingsGoal - this.currentSavings;
+
+    const differenceFrom18 = this.agesOfChildren.map(
+      (item: number) => 18 - item
+    );
+
+    const tWeighted =
+      differenceFrom18.reduce((a: number, b: number) => a + b) /
+      differenceFrom18.length;
+
+    let r = this.rateOfReturn;
+
+    const topOfEquation = (savingsGoal * r) / 12;
+    const bottomOfEquation = (1 + r / 12) ** (tWeighted * 12) - 1;
+
+    const monthlySavingsGoal = topOfEquation / bottomOfEquation;
+
+    if (monthlySavingsGoal) {
+      return monthlySavingsGoal;
+    } else {
+      return 0;
+    }
+  }
+
+  get monthlySavingsGoalFormatted(): string {
+    return this.numberWithCommas(this.monthlySavingsGoal.toFixed(0));
   }
 }

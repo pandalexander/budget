@@ -1,11 +1,19 @@
-<h2>Try Number{{ numberOfChildren }}</h2>
-<h4>agesOfChildren: {{ agesOfChildren }}</h4>
-<h4>percentageOfFunding: {{ percentageOfFunding }}</h4>
-<h4>collegeCost: {{ collegeCost }}</h4>
-<h4>collegeTime: {{ collegeTime }}</h4>
+<h1>Results</h1>
+<h3 class="!mt-6">
+  Total Savings Goal:
+  <h3 class="text-green-700 inline">${{ totalSavingsGoalFormatted }}</h3>
+</h3>
 
-<h4>currentSavings: {{ currentSavings }}</h4>
-<h4>rateOfReturn: {{ rateOfReturn }}</h4>
-<h4>annualCollegeCostInflation: {{ annualCollegeCostInflation }}</h4>
+<p>
+  This is the total amount of money needed to fund college for all children
+  after accounting for inflation and the percentage you plan to fund.
+</p>
 
-<h1>Total Savings Goal: ${{ totalSavingsGoal }}</h1>
+<h3 class="!mt-6">
+  Monthly Savings Goal:
+  <h3 class="text-green-700 inline">${{ monthlySavingsGoalFormatted }}</h3>
+</h3>
+<p>
+  This is how much you need to save monthly to reach your goal, assuming a
+  moderate return rate on investments ({{ rateOfReturn * 100 }}%).
+</p>

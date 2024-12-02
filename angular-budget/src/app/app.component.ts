@@ -13,11 +13,11 @@ import { ResultsComponent } from './results/results.component';
 export class AppComponent {
   title = 'angular-budget';
 
-  showCalculator = false;
+  showCalculator = true;
 
   payloadToResult = {
     numberOfChildren: 0,
-    agesOfChildren: [],
+    agesOfChildren: [1],
     percentageOfFunding: 0,
     collegeCost: 0,
     collegeTime: 0,
@@ -36,7 +36,7 @@ export class AppComponent {
     this.showCalculator = true;
     this.payloadToResult = {
       numberOfChildren: 0,
-      agesOfChildren: [],
+      agesOfChildren: [1],
       percentageOfFunding: 0,
       collegeCost: 0,
       collegeTime: 0,
