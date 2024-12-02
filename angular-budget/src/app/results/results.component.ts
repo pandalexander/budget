@@ -25,6 +25,10 @@ export class ResultsComponent {
     return this.payload.collegeCost;
   }
 
+  get collegeTime(): number {
+    return this.payload.collegeTime;
+  }
+
   get currentSavings(): number {
     return this.payload.currentSavings;
   }

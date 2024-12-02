@@ -88,22 +88,27 @@ export class CalculatorComponent {
   onSubmit() {
     const thisForm = this.infoForm.value;
     let annualCollegeCost = 0;
+    let currentCollegeTime = 0;
 
     switch (thisForm.collegeSelection) {
       case 'public 4-year out-of-state':
         annualCollegeCost = this.fourYearOutOfStateAnnual;
+        currentCollegeTime = 4;
         break;
 
       case 'public 4-year in-state':
         annualCollegeCost = this.fourYearInStateAnnual;
+        currentCollegeTime = 4;
         break;
 
       case 'public 2-year':
         annualCollegeCost = this.twoYearAnnual;
+        currentCollegeTime = 2;
         break;
 
       case 'private 4-year':
         annualCollegeCost = this.fourYearPrivate;
+        currentCollegeTime = 4;
         break;
     }
 
@@ -112,6 +117,7 @@ export class CalculatorComponent {
       agesOfChildren: thisForm.ages!,
       percentageOfFunding: thisForm.percentage,
       collegeCost: annualCollegeCost,
+      collegeTime: currentCollegeTime,
       currentSavings: thisForm.moneySaved,
       rateOfReturn: 0.05,
       annualCollegeCostInflation: 0.03,
