@@ -27,7 +27,6 @@ input {
 
 input {
   max-height: 35px;
-  padding-right: 0px !important;
 }
 
 input,
@@ -37,21 +36,6 @@ select {
 
 #moneySaved {
   padding-left: 14px;
-}
-
-.percent-icon-input-field {
-  background: url(../../assets/images/percent.png) no-repeat right;
-  padding-right: 25px;
-  padding-top: 3px;
-
-  background-size: 20px;
-}
-
-.dollar-icon-input-field {
-  background: url(../../assets/images/dollar.png) no-repeat left;
-  padding-left: 25px;
-  padding-top: 3px;
-  background-size: 25px;
 }
 
 button:active {
@@ -70,4 +54,15 @@ input.ng-touched.ng-invalid {
 
 .validation-message {
   display: block;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
