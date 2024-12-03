@@ -51,7 +51,7 @@ export class CalculatorComponent {
     collegeSelection: ['public 4-year out-of-state'],
 
     moneySaved: [
-      0,
+      ,
       Validators.compose([
         Validators.required,
         Validators.min(0),
