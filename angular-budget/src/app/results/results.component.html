@@ -9,6 +9,7 @@
   after accounting for inflation and the percentage you plan to fund.
 </p>
 
+@if (monthlySavingsGoal > 0) {
 <h3 class="!mt-6">
   Monthly Savings Goal:
   <h3 class="text-green-700 inline">${{ monthlySavingsGoalFormatted }}</h3>
@@ -17,3 +18,20 @@
   This is how much you need to save monthly to reach your goal, assuming a
   moderate return rate on investments ({{ rateOfReturn * 100 }}%).
 </p>
+
+} @else {
+<h3 class="!mt-6">
+  Monthly Savings Goal:
+  <h3 class="text-black inline">${{ monthlySavingsGoalFormatted }}</h3>
+</h3>
+<p>
+  Nicely done! You have more than enough saved up. Looks like you spend
+  <span class="text-green-700">
+    ${{ monthlySavingsGoalFormatted.slice(1) }}
+  </span>
+  per month and still be in the green. Not sure why you're stressing when you
+  could be out celebrating! Put this calculator away and go to Chili's - you're
+  in a good spot! 🎉
+</p>
+
+}
