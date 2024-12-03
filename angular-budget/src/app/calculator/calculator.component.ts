@@ -77,7 +77,13 @@ export class CalculatorComponent {
   }
 
   addAge() {
-    this.ages.push(this.formBuilder.control('', [Validators.required]));
+    this.ages.push(
+      this.formBuilder.control('', [
+        Validators.required,
+        Validators.min(0),
+        Validators.max(17),
+      ])
+    );
   }
 
   fourYearOutOfStateAnnual = 45240;
