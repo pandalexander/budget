@@ -4,19 +4,14 @@
     <div [ngClass]="{ 'is-visible': showWarning, invisible: !showWarning }">
       <div class="flex flex-col bg-amber-100 p-6 align-top rounded-md">
         <p class="!m-0">
-          This website is a personal project and is not affiliated with,
-          endorsed by, or connected to Ent Credit Union in any way. It was
-          created solely for demonstration purposes to showcase web development
-          learning and user interface design capabilities. All logos and
-          branding elements are used for illustrative purposes only. For
-          official Ent services, please
-          <a href="https://www.ent.com/" target="_blank"
-            >visit their official website</a
-          >.
+          Disclaimer: This calculator is a helpful tool for estimating college
+          savings goals, but it does not provide personalized financial advice.
+          We recommend consulting a qualified financial advisor to develop a
+          savings plan tailored to your unique circumstances.
         </p>
         <button
           (click)="handleWarningDismiss()"
-          class="mt-6 text-white text-center rounded-md bg-primaryRed hover:bg-red-800 active:text-primaryRed"
+          class="mt-6 text-white text-center rounded-md bg-primaryRed hover:bg-slate-500 active:text-primaryRed"
         >
           I understand
         </button>
@@ -50,7 +45,7 @@
         <div class="flex !mt-8">
           <button
             (click)="goBackToForm()"
-            class="text-white text-center rounded-md flex-1 text-xl bg-primaryRed hover:bg-red-800 active:text-primaryRed"
+            class="text-white text-center rounded-md flex-1 text-xl bg-primaryRed hover:bg-slate-500 active:text-primaryRed"
           >
             Edit Your Inputs
           </button>
